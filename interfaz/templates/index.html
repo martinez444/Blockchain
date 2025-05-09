@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos desde TXT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Enlace al archivo CSS externo -->
+</head>
+<body>
+    <div class="container">
+        <h1>Datos del archivo TXT</h1>
+        <!-- Contenedor para la tabla con scroll horizontal -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha Transacción</th>
+                        <th>Acción</th>
+                        <th>Archivo</th>
+                        <th>Hash de archivo</th>
+                        <th>Hash de bajada</th>
+                        <th>Transacción</th>
+                        <th>Status</th>
+                        <th>Descripción</th>
+                        <th>Usuario</th>
+                        <th>Servidor</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fila in tabla %}
+                    <tr>
+                        {% for celda in fila %}
+                            {% if loop.index0 in [2, 3, 4, 5, 7] %}
+                                <!-- Aplica la clase 'hash-column' solo a las celdas de hash -->
+                                <td class="hash-column" title="{{ celda }}"><p class="hash-content">{{ celda }}</p></td>
+                            {% else %}
+                                <td>{{ celda }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

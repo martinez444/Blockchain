@@ -1,0 +1,30 @@
+2025-05-08 15:11:47~upload~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~~ERROR~{'code': -32000, 'message': 'intrinsic gas too low'}~Usuario~localhost~127.0.0.1
+2025-05-08 15:12:15~upload~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0x1101f2c51d02e41926fb519a36671fa82eeb65214ea3f05bdc5389c1fa73a86a~OK~Archivo subido correctamente~Usuario~localhost~127.0.0.1
+2025-05-08 15:12:25~download~C:\\Users\\david.benllochpenin\\Desktop\\blockchain\\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~9b75b129c24606528c522004a11ed21d5935d2034fd4856e24beea10a0b67451~0xf7e9e8af4e5669831f5a1f156f170342eb2b4f33d11f57dd60eaa5c85692e949~OK~El archivo no coincide. Los hashes son diferentes.~Usuario~localhost~127.0.0.1
+2025-05-08 15:37:38~download~C:\\Users\\david.benllochpenin\\Desktop\\blockchain\\equirements~~~0xf7e9e8af4e5669831f5a1f156f170342e~ERROR~Transaction with hash: '0x0f7e9e8af4e5669831f5a1f156f170342e000000000000000000000000000000' not found.~Usuario~localhost~127.0.0.1
+2025-05-08 15:51:50~upload~EN_MEMORIA~~~~ERROR~name 'hash_archivo' is not defined~Usuario~localhost~127.0.0.1
+2025-05-08 15:52:22~upload~EN_MEMORIA~~~~ERROR~name 'hash_archivo' is not defined~Usuario~localhost~127.0.0.1
+2025-05-08 15:52:44~upload~EN_MEMORIA~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0xd2e92c7f4cb609091a471eba54608abd2c9853513c70842bb440cb373c4457cb~OK~Archivo subido correctamente~Usuario~localhost~127.0.0.1
+2025-05-08 15:54:05~download~C:\\Users\\david.benllochpenin\\Desktop\\blockchain\\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~c23c1778fc0e27e7f735e824c58ad5c24c50f08bc79abfad0295980c98319bc8~0x8006f99eac674e6bbb4226d4b81e365af3d8a218b1c2965cbbaf96685be66d82~OK~El archivo no coincide. Los hashes son diferentes.~Usuario~localhost~127.0.0.1
+2025-05-08 16:11:58~download~C:\\Users\\david.benllochpenin\\Desktop\\blockchain\\requirements~~~0x8006f99eac674e6bbb4226d4b81e365af3d8a218b1c2965cbbaf96685be66d82~ERROR~401 Client Error: Unauthorized for url: https://eth-sepolia.g.alchemy.com/v2/2SAz6OP1qiVjFyDHYbrtbwJvdv1P_hwea~Usuario~localhost~127.0.0.1
+2025-05-09 07:01:23~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:01:26~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:01:37~Server~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-09 07:01:37~Server~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-09 07:03:09~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:03:18~Server~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-09 07:04:55~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:05:10~Server~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-09 07:05:15~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:05:33~upload~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0x093cd2bf7b63aae65046c32d3cc883f42d39e3b73ea71b62cf89fca74deb852b~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-09 07:05:56~upload~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0xd55f2057e10a1211f1aa300efcfc7af6425534d9e55081230f61d36bfa97236c~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-09 07:07:26~upload~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0x0da8ef9da9f390563f6c26188abc2652b7fdccedd1ab38384f8800104c0e6cec~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-09 07:07:56~Server~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-09 07:39:43~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:39:49~upload~requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0x4a7ec8e020993691327df0515fa01d57c54c3f44837e4a29306b69dfef5cf3d2~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-09 07:41:04~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-09 07:42:34~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:42:40~UPLOAD~requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0xdec51b6a7a60de82eb8b3dfa8e29930f15312920875d2167423dd087b55ac193~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-09 07:52:10~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-09 07:52:23~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-09 07:52:31~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~

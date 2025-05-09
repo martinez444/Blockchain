@@ -1,0 +1,101 @@
+/* Estilo global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de la caja principal */
+.container {
+    max-width: fit-content;
+    height: 100vh;
+    padding: 0 20px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Estilo del título */
+h1 {
+    margin: 0;
+    padding: 20px;
+    font-size: 2rem;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de la tabla con scroll horizontal */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Mejora la experiencia en dispositivos móviles */
+}
+
+/* Estilo de la tabla con layout fijo */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed; /* Establece un diseño de tabla fijo */
+}
+
+/* Estilo de las celdas y las cabeceras */
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    width: 100px;
+    text-align: center;
+}
+
+/* Cabecera de la tabla */
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilo para las celdas de hash (aplicado solo a las celdas de hash) */
+.hash-column:nth-child(n+1):nth-child(-n+6){
+    text-decoration: underline;
+}
+
+.hash-content {
+    margin: 0;
+    padding: 0;
+    cursor: text;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+}
+
+/* Alternar filas para darle mejor apariencia */
+table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    table th, table td {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
