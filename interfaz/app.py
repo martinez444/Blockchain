@@ -213,6 +213,7 @@ def bajar():
     except Exception as e:
         create_Log(fecha_hora, "download", ruta_archivo, hash_local, hash_enviado, tx_hash, "ERROR", str(e), "Usuario", server_ip, client_ip) # Guardar en el log
         return jsonify({"error": "Error al procesar la transacción: " + str(e)}), 500
+
 """---"""   
 @app.route("/comprobar", methods=["POST"])
 def comprobar():
@@ -243,6 +244,7 @@ def comprobar():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 """---"""
+
 # Iniciar servidor
 if __name__ == "__main__":
     time = datetime.now(pytz.utc).strftime("%Y-%m-%d %H:%M:%S")
