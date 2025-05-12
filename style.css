@@ -1,0 +1,440 @@
+/* Estilo global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de la caja principal */
+.container {
+    max-width: 80%;
+    height: auto;
+    padding: 40px 20px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Estilo del título */
+h1 {
+    margin: 0;
+    padding: 10px;
+    font-size: 2rem;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de la tabla con scroll horizontal */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Mejora la experiencia en dispositivos móviles */
+}
+
+td{
+    font-size: 14px;
+}
+
+/* Estilo de la tabla con layout fijo */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed; /* Establece un diseño de tabla fijo */
+}
+
+/* Estilo de las celdas y las cabeceras */
+table th, table td {
+    padding: 20px 15px;
+    border: 1px solid #ddd;
+    width: 100px;
+    text-align: center;
+}
+
+/* Cabecera de la tabla */
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Estilo para las celdas de hash (aplicado solo a las celdas de hash) */
+.hash-column:nth-child(n+1):nth-child(-n+6){
+    text-decoration: underline;
+}
+
+td:nth-child(8), th:nth-child(8){
+    width: 100px;
+}
+
+.hash-column{
+    font-size: 13px;
+    position: relative;
+}
+
+.hash-column:hover .copy-btn {
+    visibility: visible;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+    visibility: hidden;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    font-size: 10px;
+}
+
+.hash-content {
+    margin: 0;
+    padding: 0;
+    cursor: text;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: fit-content;
+}
+
+/* Alternar filas para darle mejor apariencia */
+table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Contenedor del input de búsqueda */
+.search-container {
+    position: relative;
+    width: 300px;
+    margin: 20px auto;
+}
+
+/* Ícono de lupa */
+.search-container i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+}
+
+/* Input de búsqueda con espacio para el ícono */
+#buscador {
+    width: 100%;
+    padding: 10px 10px 10px 35px; /* padding izquierdo para el ícono */
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+#buscador:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+/* Contenedor de los filtros de fecha */
+.fecha-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: center;
+    gap: 15px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    width: fit-content;
+}
+
+/* Estilo para las etiquetas */
+.fecha-filtro label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Estilo para los inputs de fecha */
+.fecha-filtro input[type="date"] {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+/* Estilo al hacer hover */
+.fecha-filtro input[type="date"]:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    background-color: #f0f8ff;
+    cursor: text;
+}
+
+/* Estilo al hacer focus */
+.fecha-filtro input[type="date"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0,123,255,0.3);
+    background-color: #e9f5ff;
+}
+
+/* Estilo para las etiquetas */
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Estilo para los selects */
+select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+/* Estilo hover */
+select:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    background-color: #f0f8ff;
+}
+
+.limpiar-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #dc3545;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.limpiar-btn:hover {
+    background-color: #c82333;
+}
+
+a:link,
+a:visited {
+    color: #0000EE; /* O el color que uses normalmente para enlaces */
+    text-decoration: none; /* Opcional: quita el subrayado */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contenido {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.cerrar {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cerrar:hover {
+    color: #000;
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+    table th, table td {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Fondo oscuro semitransparente */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+/* Caja del modal */
+.modal-contenido {
+    background-color: #ffffff;
+    margin: 10% auto;
+    padding: 30px 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botón de cerrar */
+.cerrar {
+    position: absolute;
+    top: 12px; right: 16px;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+.cerrar:hover {
+    color: #333;
+}
+
+/* Título del modal */
+.modal-contenido h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #007bff;
+    text-align: center;
+}
+
+/* Grupo de campos del formulario */
+.form-group {
+    margin: 20px 0;
+    text-align: left;
+}
+
+/* Etiqueta */
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Estilo para input tipo archivo */
+.form-group input[type="file"] {
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    padding: 8px 6px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    box-sizing: border-box; /* <-- Asegura que el padding no sobrepase el ancho */
+}
+
+
+.form-group input[type="file"]:hover {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+}
+
+.form-group input[type="file"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+}
+
+/* Botón enviar */
+.btn-enviar {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-enviar:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para los botones en la columna "Comparar" */
+table td button.formulario-btn {
+    background-color: #0056b3; /* Verde */
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efecto hover */
+table td button.formulario-btn:hover {
+    background-color: #b8daff; /* Azul oscuro */
+    transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Efecto cuando el botón es presionado (click) */
+table td button.formulario-btn:active {
+    background-color: #004085; /* Azul aún más oscuro */
+    transform: translateY(2px); /* Efecto de presionar */
+}
+
+/* Icono dentro del botón */
+table td button.formulario-btn i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+/* Estilo del botón cuando está deshabilitado */
+table td button.formulario-btn:disabled {
+    background-color: #b8daff; /* Azul claro */
+    cursor: not-allowed;
+}
+
+
