@@ -1,7 +1,3 @@
-# --------------------------
-# !Certificación SSL omitida
-# --------------------------
-
 from flask import Flask, request, jsonify, render_template
 import hashlib
 from web3 import Web3, HTTPProvider
@@ -15,7 +11,7 @@ import pytz # Para la zona horaria UTC
 import socket # Para obtener la IP del servidor
 import functions as f
 
-f.parch_SSL() # Parchear verificación SSL 
+# f.parch_SSL() # Parchear verificación SSL 
 
 # --------------------------
 # Configuración
