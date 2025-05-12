@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Datos desde TXT</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Incluye Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Datos del archivo TXT</h1>
         <!-- Contenedor para la tabla con scroll horizontal -->
         <div class="table-container">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="buscador" placeholder="Buscar..." onkeyup="filtrarTabla()">
+            </div>
+            
+            <div class="fecha-filtro">
+                <label for="fechaInicio">Desde:</label>
+                <input type="date" id="fechaInicio" onchange="filtrarPorFecha()">
+
+                <label for="fechaFin">Hasta:</label>
+                <input type="date" id="fechaFin" onchange="filtrarPorFecha()">
+            </div>
+
+
             <table>
                 <thead>
                     <tr>
                         <th>Fecha Transacción</th>
-                        <th>Acción</th>
                         <th>Archivo</th>
                         <th>Hash de archivo</th>
-                        <th>Hash de bajada</th>
                         <th>Transacción</th>
-                        <th>Status</th>
-                        <th>Descripción</th>
                         <th>Usuario</th>
                         <th>Servidor</th>
                         <th>Cliente</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for fila in tabla %}
+                    {% for fila in datos %}
                     <tr>
                         {% for celda in fila %}
-                            {% if loop.index0 in [2, 3, 4, 5, 7] %}
-                                <!-- Aplica la clase 'hash-column' solo a las celdas de hash -->
-                                <td class="hash-column" title="{{ celda }}"><p class="hash-content">{{ celda }}</p></td>
-                            {% else %}
-                                <td>{{ celda }}</td>
-                            {% endif %}
+                        {% if loop.index0 in [1, 2, 3] %}
+                        <!-- Aplica la clase 'hash-column' solo a las celdas de hash -->
+                        <td class="hash-column" title="{{ celda }}">
+                            <p class="hash-content">{{ celda }}</p>
+                            <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
+                                <i class="fa-regular fa-copy"></i>
+                                Copy
+                            </button>
+                        </td>
+                        {% else %}
+                        <td>{{ celda }}</td>
+                        {% endif %}
                         {% endfor %}
                     </tr>
                     {% endfor %}
@@ -43,5 +63,68 @@
             </table>
         </div>
     </div>
+
+    <script defer>
+        function copiarContenido(boton) {
+            // Encuentra el párrafo hermano que contiene el texto a copiar
+            const celda = boton.parentElement.querySelector('.hash-content');
+            const texto = celda.innerText;
+
+            navigator.clipboard.writeText(texto)
+                .then(() => {
+                    // Opcional: cambia el ícono o muestra un feedback temporal
+                    boton.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    setTimeout(() => {
+                        boton.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+                    }, 1500);
+                })
+                .catch(err => alert("Error al copiar: " + err));
+        }
+
+        function filtrarTabla() {
+            const input = document.getElementById("buscador");
+            const filtro = input.value.toLowerCase();
+            const filas = document.querySelectorAll("table tbody tr");
+
+            filas.forEach(fila => {
+                const celdas = fila.querySelectorAll("td");
+                let textoFila = Array.from(celdas).map(td => td.textContent.toLowerCase()).join(" ");
+
+                if (textoFila.includes(filtro)) {
+                    fila.style.display = "";
+                } else {
+                    fila.style.display = "none";
+                }
+            });
+        }
+
+        function filtrarPorFecha() {
+            const desde = document.getElementById("fechaInicio").value;
+            const hasta = document.getElementById("fechaFin").value;
+            const filas = document.querySelectorAll("table tbody tr");
+
+            filas.forEach(fila => {
+                const celdaFecha = fila.querySelector("td"); // asume que la fecha está en la primera celda
+                if (!celdaFecha) return;
+
+                const textoFecha = celdaFecha.textContent.trim();
+                const fecha = new Date(textoFecha); // conviértelo a objeto Date
+
+                const fechaDesde = desde ? new Date(desde) : null;
+                const fechaHasta = hasta ? new Date(hasta) : null;
+
+                let visible = true;
+
+                if (fechaDesde && fecha < fechaDesde) visible = false;
+                if (fechaHasta && fecha > fechaHasta) visible = false;
+
+                fila.style.display = visible ? "" : "none";
+            });
+        }
+    </script>
+
+
+
 </body>
+
 </html>

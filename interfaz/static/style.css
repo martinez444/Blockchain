@@ -10,7 +10,7 @@ body {
 /* Estilo de la caja principal */
 .container {
     max-width: fit-content;
-    height: 100vh;
+    height: auto;
     padding: 0 20px;
     margin: 0 auto;
     background-color: #ffffff;
@@ -35,6 +35,10 @@ h1 {
     -webkit-overflow-scrolling: touch; /* Mejora la experiencia en dispositivos móviles */
 }
 
+td{
+    font-size: 14px;
+}
+
 /* Estilo de la tabla con layout fijo */
 table {
     width: 100%;
@@ -45,8 +49,7 @@ table {
 
 /* Estilo de las celdas y las cabeceras */
 table th, table td {
-    padding: 12px 15px;
-    text-align: left;
+    padding: 20px 15px;
     border: 1px solid #ddd;
     width: 100px;
     text-align: center;
@@ -64,15 +67,38 @@ table th {
     text-decoration: underline;
 }
 
+td:nth-child(8), th:nth-child(8){
+    width: 100px;
+}
+
+.hash-column{
+    font-size: 13px;
+    position: relative;
+}
+
+.hash-column:hover .copy-btn {
+    visibility: visible;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #007bff;
+    visibility: hidden;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    font-size: 10px;
+}
+
 .hash-content {
     margin: 0;
     padding: 0;
     cursor: text;
-    word-wrap: break-word;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 100px;
+    max-width: fit-content;
 }
 
 /* Alternar filas para darle mejor apariencia */
@@ -88,6 +114,92 @@ table tr:hover {
     background-color: #f1f1f1;
     cursor: pointer;
 }
+
+/* Contenedor del input de búsqueda */
+.search-container {
+    position: relative;
+    width: 300px;
+    margin: 20px auto;
+}
+
+/* Ícono de lupa */
+.search-container i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+}
+
+/* Input de búsqueda con espacio para el ícono */
+#buscador {
+    width: 100%;
+    padding: 10px 10px 10px 35px; /* padding izquierdo para el ícono */
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+#buscador:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+/* Contenedor de los filtros de fecha */
+.fecha-filtro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f1f1f1;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    max-width: 600px;
+}
+
+/* Estilo para las etiquetas */
+.fecha-filtro label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Estilo para los inputs de fecha */
+.fecha-filtro input[type="date"] {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+/* Estilo al hacer hover */
+.fecha-filtro input[type="date"]:hover {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    background-color: #f0f8ff;
+    cursor: text;
+}
+
+/* Estilo al hacer focus */
+.fecha-filtro input[type="date"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0,123,255,0.3);
+    background-color: #e9f5ff;
+}
+
+
 
 /* Responsividad */
 @media (max-width: 768px) {
