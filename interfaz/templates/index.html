@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Datos desde TXT</title>
+    <title>Interfaz</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <!-- Incluye Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -11,20 +11,34 @@
 
 <body>
     <div class="container">
-        <h1>Datos del archivo TXT</h1>
+        <h1>Interfaz de usuario blockchain</h1>
         <!-- Contenedor para la tabla con scroll horizontal -->
         <div class="table-container">
             <div class="search-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" id="buscador" placeholder="Buscar..." onkeyup="filtrarTabla()">
             </div>
-            
+
             <div class="fecha-filtro">
                 <label for="fechaInicio">Desde:</label>
                 <input type="date" id="fechaInicio" onchange="filtrarPorFecha()">
 
                 <label for="fechaFin">Hasta:</label>
                 <input type="date" id="fechaFin" onchange="filtrarPorFecha()">
+
+                <label for="ipServidor">IP Servidor:</label>
+                <select id="ipServidor" onchange="filtrarPorIPs()">
+                    <option value="">Todas</option>
+                </select>
+
+                <label for="ipCliente">IP Cliente:</label>
+                <select id="ipCliente" onchange="filtrarPorIPs()">
+                    <option value="">Todas</option>
+                </select>
+
+                <button onclick="limpiarFiltros()" class="limpiar-btn">
+                    <i class="fa-solid fa-rotate-left"></i> Limpiar filtros
+                </button>
             </div>
 
 
@@ -38,6 +52,7 @@
                         <th>Usuario</th>
                         <th>Servidor</th>
                         <th>Cliente</th>
+                        <th>Comparar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,30 +62,56 @@
                         {% if loop.index0 in [1, 2, 3] %}
                         <!-- Aplica la clase 'hash-column' solo a las celdas de hash -->
                         <td class="hash-column" title="{{ celda }}">
-                                {% if loop.index0 == 3 %}
-                                    <p class="hash-content"><a href="https://sepolia.etherscan.io/tx/{{ celda }}" target="_blank">{{ celda }}</a></p>
-                                    <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
-                                        <i class="fa-regular fa-copy"></i>
-                                        Copy
-                                    </button>
-                                {% else %}
-                                    <p class="hash-content">{{ celda }}</p>
-                                    <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
-                                        <i class="fa-regular fa-copy"></i>
-                                        Copy
-                                    </button>
-                                {% endif %}
+                            {% if loop.index0 == 3 %}
+                            <p class="hash-content"><a href="https://sepolia.etherscan.io/tx/{{ celda }}"
+                                    target="_blank">{{ celda }}</a></p>
+                            <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
+                                <i class="fa-regular fa-copy"></i>
+                                Copy
+                            </button>
+                            {% else %}
+                            <p class="hash-content">{{ celda }}</p>
+                            <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
+                                <i class="fa-regular fa-copy"></i>
+                                Copy
+                            </button>
+                            {% endif %}
                         </td>
                         {% else %}
                         <td>{{ celda }}</td>
                         {% endif %}
                         {% endfor %}
+                        <td>
+                            <button onclick="mostrarFormulario('{{ fila[3] }}')" class="formulario-btn">
+                                <i class="fa-solid fa-file-import"></i>
+                            </button>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
+
+    <!-- Modal del formulario -->
+    <!-- Modal del formulario -->
+    <div id="modalFormulario" class="modal">
+        <div class="modal-contenido animacion-modal">
+            <span class="cerrar" onclick="cerrarFormulario()">&times;</span>
+            <h2>Comparar archivo</h2>
+            <form id="formComparar" onsubmit="return enviarFormulario()">
+                <div class="form-group">
+                    <label for="rutaArchivo">Archivo</label>
+                    <input type="file" id="rutaArchivo" name="archivo" required> 
+                    <input type="hidden" id="txHash" name="tx_hash">
+                </div>
+                <button type="submit" class="btn-enviar">
+                    <i class="fa-solid fa-upload"></i> Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+
 
     <script defer>
         function copiarContenido(boton) {
@@ -129,6 +170,141 @@
                 fila.style.display = visible ? "" : "none";
             });
         }
+
+        function filtrarPorIPs() {
+            const ipServidorFiltro = document.getElementById("ipServidor").value.toLowerCase();
+            const ipClienteFiltro = document.getElementById("ipCliente").value.toLowerCase();
+            const filas = document.querySelectorAll("table tbody tr");
+
+            filas.forEach(fila => {
+                const celdas = fila.querySelectorAll("td");
+                const ipServidor = celdas[celdas.length - 2]?.textContent.toLowerCase(); // penúltima celda
+                const ipCliente = celdas[celdas.length - 1]?.textContent.toLowerCase(); // última celda
+
+                let visible = true;
+
+                if (ipServidorFiltro && !ipServidor.includes(ipServidorFiltro)) visible = false;
+                if (ipClienteFiltro && !ipCliente.includes(ipClienteFiltro)) visible = false;
+
+                fila.style.display = visible ? "" : "none";
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            llenarSelectsIP();
+        });
+
+        function llenarSelectsIP() {
+            const filas = document.querySelectorAll("table tbody tr");
+            const servidorSet = new Set();
+            const clienteSet = new Set();
+
+            filas.forEach(fila => {
+                const celdas = fila.querySelectorAll("td");
+                const ipServidor = celdas[celdas.length - 2]?.textContent.trim();
+                const ipCliente = celdas[celdas.length - 1]?.textContent.trim();
+                if (ipServidor) servidorSet.add(ipServidor);
+                if (ipCliente) clienteSet.add(ipCliente);
+            });
+
+            const selectServidor = document.getElementById("ipServidor");
+            const selectCliente = document.getElementById("ipCliente");
+
+            servidorSet.forEach(ip => {
+                const option = document.createElement("option");
+                option.value = ip;
+                option.textContent = ip;
+                selectServidor.appendChild(option);
+            });
+
+            clienteSet.forEach(ip => {
+                const option = document.createElement("option");
+                option.value = ip;
+                option.textContent = ip;
+                selectCliente.appendChild(option);
+            });
+        }
+
+        function filtrarPorIPs() {
+            const ipServidorFiltro = document.getElementById("ipServidor").value;
+            const ipClienteFiltro = document.getElementById("ipCliente").value;
+            const filas = document.querySelectorAll("table tbody tr");
+
+            filas.forEach(fila => {
+                const celdas = fila.querySelectorAll("td");
+                const ipServidor = celdas[celdas.length - 2]?.textContent.trim();
+                const ipCliente = celdas[celdas.length - 1]?.textContent.trim();
+
+                let visible = true;
+
+                if (ipServidorFiltro && ipServidor !== ipServidorFiltro) visible = false;
+                if (ipClienteFiltro && ipCliente !== ipClienteFiltro) visible = false;
+
+                fila.style.display = visible ? "" : "none";
+            });
+
+
+        }
+
+        function limpiarFiltros() {
+            // Limpiar inputs
+            document.getElementById("fechaInicio").value = "";
+            document.getElementById("fechaFin").value = "";
+            document.getElementById("ipServidor").value = "";
+            document.getElementById("ipCliente").value = "";
+            document.getElementById("buscador").value = "";
+
+            // Mostrar todas las filas
+            const filas = document.querySelectorAll("table tbody tr");
+            filas.forEach(fila => {
+                fila.style.display = "";
+            });
+        }
+
+        function mostrarFormulario(txHash) {
+            document.getElementById("txHash").value = txHash;
+            document.getElementById("modalFormulario").style.display = "block";
+        }
+
+        function cerrarFormulario() {
+            document.getElementById("modalFormulario").style.display = "none";
+        }
+
+    function enviarFormulario() {
+        const form = document.getElementById("formComparar");
+        const formData = new FormData(form);
+
+        fetch("/bajar", {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.mensaje) {
+                if (data.mensaje == "OK")
+                    alert(
+                        "Coincide"
+                    );
+                else if (data.mensaje == "KO")
+                    alert(
+                        "No coincide"
+                    );
+                else
+                    alert(data.mensaje);
+            } else if (data.error) {
+                alert("Error: " + data.error);
+            } else {
+                alert("Respuesta inesperada del servidor.");
+            }
+        })
+        .catch(error => {
+            console.error("Error en la solicitud:", error);
+            alert("Error al conectar con la API");
+        });
+
+        return false; // Evita el envío tradicional del formulario
+    }      
+
     </script>
 
 

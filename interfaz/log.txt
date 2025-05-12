@@ -32,3 +32,62 @@
 2025-05-12 09:58:18~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
 2025-05-12 09:58:35~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
 2025-05-12 09:59:37~UPLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~~0xd28d645a06f9e4d8ba088eb29b49da52cd8d24a3b3b3d4e3aab631ee278c8dfa~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 11:27:04~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 11:27:05~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 13:13:36~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:13:39~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:14:28~UPLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~~0xd7c0021c4f0defd7e12606dba8319f6333a7963c2e4b558d9af373ce6f588182~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 13:18:34~DOWNLOAD~requirements.txt~~~0xd7c0021c4f0defd7e12606dba8319f6333a7963c2e4b558d9af373ce6f588182~ERROR~expected str, bytes or os.PathLike object, not FileStorage~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 13:19:40~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:19:57~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:20:05~DOWNLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xd7c0021c4f0defd7e12606dba8319f6333a7963c2e4b558d9af373ce6f588182~OK~El archivo es auténtico. Los hashes coinciden.~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 13:20:21~DOWNLOAD~README.md~0916b611a2937dbcb5141f2061b1b73dc26ed3f02947141692c2b3e015883aef~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xd7c0021c4f0defd7e12606dba8319f6333a7963c2e4b558d9af373ce6f588182~OK~El archivo no coincide. Los hashes son diferentes.~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 13:20:56~UPLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~~0x385474385290d2cc09572029501887788640016824215ad9736a9c96abd31656~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 13:21:45~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:21:50~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:21:54~DOWNLOAD~README.md~0916b611a2937dbcb5141f2061b1b73dc26ed3f02947141692c2b3e015883aef~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xd7c0021c4f0defd7e12606dba8319f6333a7963c2e4b558d9af373ce6f588182~OK~El archivo no coincide. Los hashes son diferentes.~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 13:22:07~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:22:27~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:22:49~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 13:22:50~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 13:22:54~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:22:57~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:24:41~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:24:59~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:25:07~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 13:25:07~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 13:25:22~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:25:25~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:27:08~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:27:20~DOWNLOAD~requirements.txt~~~0x385474385290d2cc09572029501887788640016824215ad9736a9c96abd31656~ERROR~expected str, bytes or os.PathLike object, not FileStorage~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 13:27:33~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 13:27:33~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-12 13:33:20~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:33:24~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 13:33:44~UPLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:08:04~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:24:16~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:24:18~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:24:34~DOWNLOAD~requirements.txt~~~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~ERROR~expected str, bytes or os.PathLike object, not FileStorage~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:26:51~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:27:00~DOWNLOAD~README.md~~~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~ERROR~[Errno 2] No such file or directory: b'# Blockchain'~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:27:12~DOWNLOAD~requirements.txt~~~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~ERROR~[Errno 22] Invalid argument: b'aiohappyeyeballs==2.6.1\r\naiohttp==3.11.18\r\naiosignal==1.3.2\r\nannotated-types==0.7.0\r\nattrs==25.3.0\r\nbitarray==3.4.0\r\nblinker==1.9.0\r\ncertifi==2025.4.26\r\ncharset-normalizer==3.4.2\r\nckzg==2.1.1\r\nclick==8.1.8\r\ncolorama==0.4.6\r\ncytoolz==1.0.1\r\neth-account==0.13.7\r\neth-hash==0.7.1\r\neth-keyfile==0.8.1\r\neth-keys==0.7.0\r\neth-rlp==2.2.0\r\neth-typing==5.2.1\r\neth-utils==5.3.0\r\neth_abi==5.2.0\r\nFlask==3.1.0\r\nfrozenlist==1.6.0\r\nhexbytes==1.3.0\r\nidna==3.10\r\nitsdangerous==2.2.0\r\nJinja2==3.1.6\r\nMarkupSafe==3.0.2\r\nmultidict==6.4.3\r\nparsimonious==0.10.0\r\npropcache==0.3.1\r\npycryptodome==3.22.0\r\npydantic==2.11.4\r\npydantic_core==2.33.2\r\npytz==2025.2\r\npyunormalize==16.0.0\r\npywin32==310\r\nregex==2024.11.6\r\nrequests==2.32.3\r\nrlp==4.1.0\r\ntoolz==1.0.0\r\ntypes-requests==2.32.0.20250328\r\ntyping-inspection==0.4.0\r\ntyping_extensions==4.13.2\r\nurllib3==2.4.0\r\nweb3==7.11.0\r\nwebsockets==15.0.1\r\nWerkzeug==3.1.3\r\nyarl==1.20.0\r\n'~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:27:23~DOWNLOAD~requirements.txt~~~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~ERROR~[Errno 22] Invalid argument: b'aiohappyeyeballs==2.6.1\r\naiohttp==3.11.18\r\naiosignal==1.3.2\r\nannotated-types==0.7.0\r\nattrs==25.3.0\r\nbitarray==3.4.0\r\nblinker==1.9.0\r\ncertifi==2025.4.26\r\ncharset-normalizer==3.4.2\r\nckzg==2.1.1\r\nclick==8.1.8\r\ncolorama==0.4.6\r\ncytoolz==1.0.1\r\neth-account==0.13.7\r\neth-hash==0.7.1\r\neth-keyfile==0.8.1\r\neth-keys==0.7.0\r\neth-rlp==2.2.0\r\neth-typing==5.2.1\r\neth-utils==5.3.0\r\neth_abi==5.2.0\r\nFlask==3.1.0\r\nfrozenlist==1.6.0\r\nhexbytes==1.3.0\r\nidna==3.10\r\nitsdangerous==2.2.0\r\nJinja2==3.1.6\r\nMarkupSafe==3.0.2\r\nmultidict==6.4.3\r\nparsimonious==0.10.0\r\npropcache==0.3.1\r\npycryptodome==3.22.0\r\npydantic==2.11.4\r\npydantic_core==2.33.2\r\npytz==2025.2\r\npyunormalize==16.0.0\r\npywin32==310\r\nregex==2024.11.6\r\nrequests==2.32.3\r\nrlp==4.1.0\r\ntoolz==1.0.0\r\ntypes-requests==2.32.0.20250328\r\ntyping-inspection==0.4.0\r\ntyping_extensions==4.13.2\r\nurllib3==2.4.0\r\nweb3==7.11.0\r\nwebsockets==15.0.1\r\nWerkzeug==3.1.3\r\nyarl==1.20.0\r\n'~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:27:36~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:28:01~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:28:01~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:28:59~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:29:02~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:29:09~DOWNLOAD~README.md~0916b611a2937dbcb5141f2061b1b73dc26ed3f02947141692c2b3e015883aef~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~El archivo no coincide. Los hashes son diferentes.~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:29:20~DOWNLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~El archivo es auténtico. Los hashes coinciden.~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:31:04~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:43:42~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:46:01~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:48:10~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 14:48:59~DOWNLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~OK~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:49:06~DOWNLOAD~README.md~0916b611a2937dbcb5141f2061b1b73dc26ed3f02947141692c2b3e015883aef~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~KO~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:53:02~DOWNLOAD~README.md~0916b611a2937dbcb5141f2061b1b73dc26ed3f02947141692c2b3e015883aef~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~KO~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:53:27~DOWNLOAD~README.md~0916b611a2937dbcb5141f2061b1b73dc26ed3f02947141692c2b3e015883aef~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~KO~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:53:46~DOWNLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~OK~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:53:52~DOWNLOAD~README.md~0916b611a2937dbcb5141f2061b1b73dc26ed3f02947141692c2b3e015883aef~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~KO~Usuario~10.100.87.186~127.0.0.1
+2025-05-12 14:54:05~DOWNLOAD~requirements.txt~87387e30e0d4a6689b3c58114bac94708924f8384e0dedf12f46199c3b84264e~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~0xc6187e1e9965a56bc299dd4f5806e0f83530bfbe3718180f1d11c674be82ebb7~OK~KO~Usuario~10.100.87.186~127.0.0.1

@@ -112,13 +112,14 @@ def bajar():
         # Leer el contenido del archivo (en memoria)
 
         # Calcular hash del archivo (usa directamente el contenido)
-        hash_local = f.hash_archivo(archivo)  # Debes crear o adaptar esta función
+        contenido = archivo.read()
+        hash_local = f.hash_archivo(contenido)  # Debes crear o adaptar esta función
 
         # Obtener el hash enviado en la transacción
         tx = w3.eth.get_transaction(tx_hash)
         hash_enviado = tx['input'].hex()
 
-        mensaje = "El archivo es auténtico. Los hashes coinciden." if hash_enviado == hash_local else "El archivo no coincide. Los hashes son diferentes."
+        mensaje = "OK" if hash_enviado == hash_local else "KO"
 
         f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado, tx_hash, "OK", mensaje, "Usuario")
 
@@ -131,46 +132,6 @@ def bajar():
     except Exception as e:
         f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado, tx_hash, "ERROR", str(e), "Usuario")
         return jsonify({"error": "Error al procesar la transacción: " + str(e)}), 500
-
-"""
-@app.route("/bajar", methods=["POST"])
-def bajar():
-    hash_local = ""
-    hash_enviado = ""
-    tx_hash = ""
-    try:
-        if request.is_json:
-            data = request.get_json()
-        else:
-            data = {
-                "tx_hash": request.form.get("tx_hash"),
-                "ruta_archivo": request.form.get("ruta_archivo")
-            }
-
-        tx_hash = data.get("tx_hash")
-        ruta_archivo = data.get("ruta_archivo")
-        nombre_archivo = os.path.basename(ruta_archivo) # Se obtiene el nombre del archivo a partir de la ruta
-        if not tx_hash or not ruta_archivo:
-            return jsonify({"error": "Se debe proporcionar tx_hash y ruta_archivo"}), 400
-
-        tx = w3.eth.get_transaction(tx_hash) # Se obtiene la transacción a partir del hash de transacción que hemos indicado
-        hash_enviado = tx['input'].hex() # Se obtiene el hash del archivo a partir de la transacción (en este caso, el hash del archivo se encuentra en el campo "input" de la transacción)
-        hash_local = f.hash_archivo(ruta_archivo) # Se saca el hash del archivo local
-
-        mensaje = "El archivo es autentico. Los hashes coinciden." if hash_enviado == hash_local else "El archivo no coincide. Los hashes son diferentes." # Se compara el hash del archivo local        
-        
-        f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado, tx_hash, "OK", mensaje, "Usuario") # Guardar en el log
-        # Mensaje que se printea en consola
-        return jsonify({
-            "mensaje": mensaje,
-            "hash_local": hash_local,
-            "hash_enviado": hash_enviado
-        })
-
-    except Exception as e:
-        f.create_Log("DOWNLOAD", ruta_archivo, hash_local, hash_enviado, tx_hash, "ERROR", str(e), "Usuario") # Guardar en el log
-        return jsonify({"error": "Error al procesar la transacción: " + str(e)}), 500
-"""
 
 # Iniciar servidor
 if __name__ == "__main__":

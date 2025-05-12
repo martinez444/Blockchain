@@ -10,10 +10,6 @@ import json
 import pytz # Para la zona horaria UTC
 import socket # Para obtener la IP del servidor
 
-
-
-
-
 # Parchear verificación SSL
 def parch_SSL():
     
@@ -27,12 +23,12 @@ def parch_SSL():
     requests.Session.request = unsafe_request
  
 # Hash de archivo en formato SHA-256   
-def hash_archivo(path):
-    sha256 = hashlib.sha256()
-    with open(path, 'rb') as f:
-        while chunk := f.read(4096):
-            sha256.update(chunk)
-    return sha256.hexdigest()
+def hash_archivo(contenido_bytes):
+    return hashlib.sha256(contenido_bytes).hexdigest()
+
+def hash_bajada(file_storage):
+    contenido = file_storage.read()
+    return hashlib.sha256(contenido).hexdigest()
 
 # Ubicación del archivo de log
 log_dir = os.path.dirname(os.path.abspath(__file__))
@@ -71,7 +67,7 @@ def getServerIp():
 # Función para convertir un archivo en tabla y pasarsela al HTML
 def leer_txt_como_tabla(ruta_archivo):
     tabla = []
-    with open(ruta_archivo, encoding='utf-8') as f:
+    with open(ruta_archivo, encoding='utf-8', errors='replace') as f:
         for linea in f:
             celdas = linea.strip().split('~')
             if celdas:  # Ignorar líneas vacías
