@@ -78,9 +78,18 @@ def leer_txt_como_tabla(ruta_archivo):
                 tabla.append(celdas)
 
     cols_elim = [7, 6, 4, 1]
+    cols_elim = sorted(cols_elim, reverse=True)
+
+    tabla_filtrada = []
+
     for fila in tabla:
-        for i in cols_elim:
-            if i < len(fila):  # Por si alguna fila es más corta
-                del fila[i]
-    
+        if len(fila) > 1 and fila[1] == "UPLOAD" and fila[6] == "OK":
+            nueva_fila = fila[:]  # Copia para no modificar la original
+            for i in cols_elim:
+                if i < len(nueva_fila):
+                    del nueva_fila[i]
+            tabla_filtrada.append(nueva_fila)
+
+    tabla = tabla_filtrada
+
     return tabla

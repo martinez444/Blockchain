@@ -1,5 +1,5 @@
-2025-05-08 15:11:47~upload~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~~ERROR~{'code': -32000, 'message': 'intrinsic gas too low'}~Usuario~localhost~127.0.0.1
-2025-05-08 15:12:15~upload~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0x1101f2c51d02e41926fb519a36671fa82eeb65214ea3f05bdc5389c1fa73a86a~OK~Archivo subido correctamente~Usuario~localhost~127.0.0.1
+2025-05-08 15:11:47~UPLOAD~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~~ERROR~{'code': -32000, 'message': 'intrinsic gas too low'}~Usuario~localhost~127.0.0.1
+2025-05-08 15:12:15~UPLOAD~C:\Users\david.benllochpenin\Desktop\blockchain\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~~0x1101f2c51d02e41926fb519a36671fa82eeb65214ea3f05bdc5389c1fa73a86a~OK~Archivo subido correctamente~Usuario~localhost~127.0.0.1
 2025-05-08 15:12:25~download~C:\\Users\\david.benllochpenin\\Desktop\\blockchain\\requirements~7d4887a332ad0dfb1b221ce0b7e57cd2f80aee1b1680752f48276b38c7aa631b~9b75b129c24606528c522004a11ed21d5935d2034fd4856e24beea10a0b67451~0xf7e9e8af4e5669831f5a1f156f170342eb2b4f33d11f57dd60eaa5c85692e949~OK~El archivo no coincide. Los hashes son diferentes.~Usuario~localhost~127.0.0.1
 2025-05-12 07:59:13~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
 2025-05-12 07:59:16~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
@@ -17,3 +17,18 @@
 2025-05-12 09:22:33~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
 2025-05-12 09:25:29~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
 2025-05-12 09:25:40~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:37:48~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:39:41~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:40:04~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:43:35~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:50:53~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:50:55~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:51:36~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:52:29~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:53:14~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:53:32~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:54:22~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:57:29~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:58:18~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:58:35~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
+2025-05-12 09:59:37~UPLOAD~requirements.txt~7cbf0b89080a7983444469b5a15a2038a7b9618d55176abe2f7f670417ac1d17~~0xd28d645a06f9e4d8ba088eb29b49da52cd8d24a3b3b3d4e3aab631ee278c8dfa~OK~Archivo subido correctamente~Usuario~10.100.87.186~127.0.0.1

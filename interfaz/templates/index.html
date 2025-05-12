@@ -47,11 +47,19 @@
                         {% if loop.index0 in [1, 2, 3] %}
                         <!-- Aplica la clase 'hash-column' solo a las celdas de hash -->
                         <td class="hash-column" title="{{ celda }}">
-                            <p class="hash-content">{{ celda }}</p>
-                            <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
-                                <i class="fa-regular fa-copy"></i>
-                                Copy
-                            </button>
+                                {% if loop.index0 == 3 %}
+                                    <p class="hash-content"><a href="https://sepolia.etherscan.io/tx/{{ celda }}" target="_blank">{{ celda }}</a></p>
+                                    <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
+                                        <i class="fa-regular fa-copy"></i>
+                                        Copy
+                                    </button>
+                                {% else %}
+                                    <p class="hash-content">{{ celda }}</p>
+                                    <button onclick="copiarContenido(this)" class="copy-btn" title="Copiar hash">
+                                        <i class="fa-regular fa-copy"></i>
+                                        Copy
+                                    </button>
+                                {% endif %}
                         </td>
                         {% else %}
                         <td>{{ celda }}</td>
