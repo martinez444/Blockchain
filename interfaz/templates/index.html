@@ -172,24 +172,6 @@
             });
         }
 
-        function filtrarPorIPs() {
-            const ipServidorFiltro = document.getElementById("ipServidor").value.toLowerCase();
-            const ipClienteFiltro = document.getElementById("ipCliente").value.toLowerCase();
-            const filas = document.querySelectorAll("table tbody tr");
-
-            filas.forEach(fila => {
-                const celdas = fila.querySelectorAll("td");
-                const ipServidor = celdas[celdas.length - 2]?.textContent.toLowerCase(); // penúltima celda
-                const ipCliente = celdas[celdas.length - 1]?.textContent.toLowerCase(); // última celda
-
-                let visible = true;
-
-                if (ipServidorFiltro && !ipServidor.includes(ipServidorFiltro)) visible = false;
-                if (ipClienteFiltro && !ipCliente.includes(ipClienteFiltro)) visible = false;
-
-                fila.style.display = visible ? "" : "none";
-            });
-        }
 
         document.addEventListener("DOMContentLoaded", function () {
             llenarSelectsIP();
@@ -202,8 +184,8 @@
 
             filas.forEach(fila => {
                 const celdas = fila.querySelectorAll("td");
-                const ipServidor = celdas[celdas.length - 2]?.textContent.trim();
-                const ipCliente = celdas[celdas.length - 1]?.textContent.trim();
+                const ipServidor = celdas[celdas.length - 3]?.textContent.trim();
+                const ipCliente = celdas[celdas.length - 2]?.textContent.trim();
                 if (ipServidor) servidorSet.add(ipServidor);
                 if (ipCliente) clienteSet.add(ipCliente);
             });
@@ -233,8 +215,8 @@
 
             filas.forEach(fila => {
                 const celdas = fila.querySelectorAll("td");
-                const ipServidor = celdas[celdas.length - 2]?.textContent.trim();
-                const ipCliente = celdas[celdas.length - 1]?.textContent.trim();
+                const ipServidor = celdas[celdas.length - 3]?.textContent.trim();
+                const ipCliente = celdas[celdas.length - 2]?.textContent.trim();
 
                 let visible = true;
 
@@ -265,6 +247,14 @@
         function mostrarFormulario(txHash) {
             document.getElementById("txHash").value = txHash;
             document.getElementById("modalFormulario").style.display = "block";
+            
+            const form = document.getElementById("modalFormulario");
+            document.getElementById("txHash").value = txHash;
+            form.style.display = "flex";
+            form.style.justifyContent = "center";
+            form.style.alignItems = "center";
+            form.style.flexDirection = "column";
+ 
         }
 
         function cerrarFormulario() {
@@ -290,6 +280,7 @@
         formData.append("archivo", archivoInput.files[0]);
         formData.append("tx_hash", txHashInput.value);
 
+        resSubmit.innerHTML = ""; // Limpiar el contenedor de resultados
         fetch("/bajar", {
             method: "POST",
             body: formData,
