@@ -298,12 +298,12 @@
                 if(data.mensaje == "OK"){
                     resTxt.classList.add("green");
                     resTxt.innerText = "¡Los hashes coinciden!";
-                    resImg.src = "../static/sujeto.jpg";
+                    resImg.src = "../static/tick.webp";
                 }
                 else if (data.mensaje === "KO") {
                     resTxt.classList.add("red");
                     resTxt.innerText = "¡Los hashes no coinciden!"
-                    resImg.src = "../static/sujeto.jpg";
+                    resImg.src = "../static/cruz.webp";
                 }
                 else {
                     alert(data.mensaje);
