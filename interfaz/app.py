@@ -86,6 +86,7 @@ def subir():
 
 @app.route("/bajar", methods=["POST"])
 def bajar():
+    print("ñema")
     hash_local = ""
     hash_enviado = ""
     tx_hash = ""

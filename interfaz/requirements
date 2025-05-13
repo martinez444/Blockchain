@@ -1,0 +1,30 @@
+web3
+requests
+flasks
+
+
+Primero hay que iniciar el servidor ejecutando app.py, luego, en otra ventana de la terminal se pueden ejecutar los comandos
+
+ejemplo subir: (corregir rutas)
+curl -F "file=@C:\Users\adamrobert.calvograh\Documents\blockchain\requirements" http://localhost:5000/subir 
+
+ejemplo comparar: (corregir rutas)
+curl -d "tx_hash=0x5c38aa23200ff39e5d0fb0f4dc661ffd0c6a73dc33393f73452c57083f9d6b10" -d "ruta_archivo=C:\\Users\\david.benllochpenin\\Desktop\\blockchain\\requirements" "http://localhost:5000/bajar"
+
+Crear un fichero de auditoría en lugar de un fichero log para mostrar la máxima información posible: ip y usuario de equipo, ip del servidor, hora de la transaccion... 
+
+Siempre guardar y transmitir fechas en UTC.
+
+Universal Time Zone 
+
+UTC = GMT0 
+
+Donde esta meridiano de gremwich
+
+Actualmente estamos en GMT+2
+
+Cuanto está ethereum en euros y observar variabilidad del precio
+
+Tiempo medio que tarda en contestar al subir y al bajar
+
+Montar reunion con gente de producto Montse o Palero

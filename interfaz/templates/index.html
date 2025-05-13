@@ -102,7 +102,7 @@
             <form id="formComparar" onsubmit="return enviarFormulario()" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="rutaArchivo">Archivo</label>
-                    <input type="file" id="rutaArchivo" name="archivo" required> 
+                    <input type="file" id="rutaArchivo" name="archivo" required>
                     <input type="hidden" id="txHash" name="tx_hash">
                 </div>
                 <button type="submit" class="btn-enviar">
@@ -247,96 +247,94 @@
         function mostrarFormulario(txHash) {
             document.getElementById("txHash").value = txHash;
             document.getElementById("modalFormulario").style.display = "block";
-            
+
             const form = document.getElementById("modalFormulario");
             document.getElementById("txHash").value = txHash;
             form.style.display = "flex";
             form.style.justifyContent = "center";
             form.style.alignItems = "center";
             form.style.flexDirection = "column";
- 
+
         }
 
         function cerrarFormulario() {
             document.getElementById("modalFormulario").style.display = "none";
         }
 
-    function enviarFormulario() {
-        const form = document.getElementById("formComparar");
-        const archivoInput = document.getElementById("rutaArchivo");
-        const txHashInput = document.getElementById("txHash");
-        
+        function enviarFormulario() {
+            const form = document.getElementById("formComparar");
+            const archivoInput = document.getElementById("rutaArchivo");
+            const txHashInput = document.getElementById("txHash");
 
-        const resSubmit = document.getElementById("res-submit");
-        const cerrar = document.getElementById("cerrar");
 
-        // Validar que se ha proporcionado un tx_hash (opcional si lo estás cargando dinámicamente)
-        if (!txHashInput.value) {
-            alert("No se ha proporcionado un hash de transacción.");
-            return false;
-        }
-
-        const formData = new FormData();
-        formData.append("archivo", archivoInput.files[0]);
-        formData.append("tx_hash", txHashInput.value);
-
-        resSubmit.innerHTML = ""; // Limpiar el contenedor de resultados
-        fetch("/bajar", {
-            method: "POST",
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            const resImg = document.createElement("img");
-            const resTxt = document.createElement("p");
-            resImg.classList.add("fade-in");
-            resTxt.classList.add("fade-in", "reslt-message");
             const resSubmit = document.getElementById("res-submit");
-            resSubmit.appendChild(resTxt);
-            resSubmit.appendChild(resImg);
-            if (data.mensaje) {
-                if(data.mensaje == "OK"){
-                    resTxt.classList.add("green");
-                    resTxt.innerText = "¡Los hashes coinciden!";
-                    resImg.src = "../static/tick.webp";
-                }
-                else if (data.mensaje === "KO") {
-                    resTxt.classList.add("red");
-                    resTxt.innerText = "¡Los hashes no coinciden!"
-                    resImg.src = "../static/cruz.webp";
-                }
-                else {
-                    alert(data.mensaje);
-                }
-            } else if (data.error) {
-                alert("Error: " + data.error);
-            } else {
-                alert("Respuesta inesperada del servidor.");
+            const cerrar = document.getElementById("cerrar");
+
+            // Validar que se ha proporcionado un tx_hash (opcional si lo estás cargando dinámicamente)
+            if (!txHashInput.value) {
+                alert("No se ha proporcionado un hash de transacción.");
+                return false;
             }
 
-            // Vacía el input de archivo
-            archivoInput.value = "";
- 
-            // Después de 5 segundos, añade animación de salida y elimina la imagen
-            setTimeout(() => {
-                resImg.classList.remove("fade-in");
-                resTxt.classList.remove("fade-in");
-                // resImg.classList.add("fade-out");
-                // resTxt.classList.add("fade-out");
- 
-                cerrar.addEventListener("click", () => {
-                    resTxt.remove();
-                    resImg.remove();
-                });
-            }, 3000);
-        })  
-        .catch(error => {
-            console.error("Error en la solicitud:", error);
-            alert("Error al conectar con la API");
-        });
+            const formData = new FormData();
+            formData.append("archivo", archivoInput.files[0]);
+            formData.append("tx_hash", txHashInput.value);
 
-        return false; // Evita el envío tradicional del formulario
-    }      
+            resSubmit.innerHTML = ""; // Limpiar el contenedor de resultados
+            fetch("/bajar", {
+                method: "POST",
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const resImg = document.createElement("img");
+                    const resTxt = document.createElement("p");
+                    resImg.classList.add("fade-in");
+                    resTxt.classList.add("fade-in", "reslt-message");
+                    const resSubmit = document.getElementById("res-submit");
+                    resSubmit.appendChild(resTxt);
+                    resSubmit.appendChild(resImg);
+                    if (data.mensaje) {
+                        if (data.mensaje == "OK") {
+                            resTxt.classList.add("green");
+                            resTxt.innerText = "¡Los hashes coinciden!";
+                            resImg.src = "../static/tick.webp";
+                        }
+                        else if (data.mensaje === "KO") {
+                            resTxt.classList.add("red");
+                            resTxt.innerText = "¡Los hashes no coinciden!"
+                            resImg.src = "../static/cruz.webp";
+                        }
+                        else {
+                            alert(data.mensaje);
+                            resSubmit.innerHTML = "";
+                            resTxt.innerText = ""
+                            resImg.style.opacity = 0
+                        }
+                    } else if (data.error) {
+                        alert("Error: " + data.error);
+                        resSubmit.innerHTML = "";
+                        resTxt.innerText = ""
+                        resImg.style.opacity = 0
+                    } else {
+                        alert("Respuesta inesperada del servidor.");
+                    }
+
+                    // Vacía el input de archivo
+                    archivoInput.value = "";
+
+                    cerrar.addEventListener("click", () => {
+                        resTxt.remove();
+                        resImg.remove();
+                    });
+                })
+                .catch(error => {
+                    console.error("Error en la solicitud:", error);
+                    alert("Error al conectar con la API");
+                });
+
+            return false; // Evita el envío tradicional del formulario
+        }
 
     </script>
 

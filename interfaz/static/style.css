@@ -480,9 +480,11 @@ table td button.formulario-btn:disabled {
 }
 
 .green{
-    color: green;
+    color: rgb(0, 195, 0);
+    font-size: 22px;
 }
 
 .red{
-    color: red;
+    color: rgb(255, 0, 0);
+    font-size: 22px;
 }
