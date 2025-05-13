@@ -97,7 +97,7 @@
     <!-- Modal del formulario -->
     <div id="modalFormulario" class="modal">
         <div class="modal-contenido animacion-modal">
-            <span class="cerrar" onclick="cerrarFormulario()">&times;</span>
+            <span id="cerrar" class="cerrar" onclick="cerrarFormulario()">&times;</span>
             <h2>Comparar archivo</h2>
             <form id="formComparar" onsubmit="return enviarFormulario()" enctype="multipart/form-data">
                 <div class="form-group">
@@ -110,6 +110,7 @@
                 </button>
             </form>
         </div>
+        <div id="res-submit"></div>
     </div>
 
 
@@ -274,12 +275,10 @@
         const form = document.getElementById("formComparar");
         const archivoInput = document.getElementById("rutaArchivo");
         const txHashInput = document.getElementById("txHash");
+        
 
-        // Validar que se ha seleccionado un archivo
-        if (!archivoInput.files || archivoInput.files.length === 0) {
-            alert("Por favor, selecciona un archivo antes de enviar.");
-            return false;
-        }
+        const resSubmit = document.getElementById("res-submit");
+        const cerrar = document.getElementById("cerrar");
 
         // Validar que se ha proporcionado un tx_hash (opcional si lo estás cargando dinámicamente)
         if (!txHashInput.value) {
@@ -297,19 +296,51 @@
         })
         .then(response => response.json())
         .then(data => {
+            const resImg = document.createElement("img");
+            const resTxt = document.createElement("p");
+            resImg.classList.add("fade-in");
+            resTxt.classList.add("fade-in", "reslt-message");
+            const resSubmit = document.getElementById("res-submit");
+            resSubmit.appendChild(resTxt);
+            resSubmit.appendChild(resImg);
             if (data.mensaje) {
                 if(data.mensaje == "OK"){
                     alert("Coinciden")
+                    resTxt.classList.add("green");
+                    resTxt.innerText = "¡Los hashes coinciden!";
+                    resImg.src = "../static/Sujeto.png";
+                }
+                else if (data.mensaje === "KO") {
+                    alert("No coinciden")
+                    resTxt.classList.add("red");
+                    resTxt.innerText = "¡Los hashes no coinciden!"
+                    resImg.src = "../static/sujeto.jpg";
                 }
                 else {
-                    alert("No coinciden")
+                    alert(data.mensaje);
                 }
             } else if (data.error) {
                 alert("Error: " + data.error);
             } else {
                 alert("Respuesta inesperada del servidor.");
             }
-        })
+
+            // Vacía el input de archivo
+            archivoInput.value = "";
+ 
+            // Después de 5 segundos, añade animación de salida y elimina la imagen
+            setTimeout(() => {
+                resImg.classList.remove("fade-in");
+                resTxt.classList.remove("fade-in");
+                // resImg.classList.add("fade-out");
+                // resTxt.classList.add("fade-out");
+ 
+                cerrar.addEventListener("click", () => {
+                    resTxt.remove();
+                    resImg.remove();
+                });
+            }, 3000);
+        })  
         .catch(error => {
             console.error("Error en la solicitud:", error);
             alert("Error al conectar con la API");

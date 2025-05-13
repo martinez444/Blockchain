@@ -43,6 +43,7 @@ td{
 table {
     width: 100%;
     border-collapse: collapse;
+    border-radius: 20px;
     margin-bottom: 20px;
     table-layout: fixed; /* Establece un diseño de tabla fijo */
 }
@@ -245,28 +246,6 @@ a:visited {
     text-decoration: none; /* Opcional: quita el subrayado */
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-contenido {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    text-align: center;
-}
-
 .cerrar {
     color: #aaa;
     float: right;
@@ -305,7 +284,7 @@ a:visited {
 /* Caja del modal */
 .modal-contenido {
     background-color: #ffffff;
-    margin: 10% auto;
+    margin: 40px auto;
     padding: 30px 25px;
     border-radius: 12px;
     width: 90%;
@@ -437,4 +416,73 @@ table td button.formulario-btn:disabled {
     cursor: not-allowed;
 }
 
+#res-submit{
+    position: absolute;
+    transform: translate(50%, 0);
+    top: 70%;
+    right: 50%;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#res-submit img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    display: block;
+}
+
+/* Animaciones para mostrar y ocultar la imagen de resultado */
+.fade-in {
+    animation: fadeInImage 0.7s ease-in forwards;
+}
+
+.fade-out {
+    animation: fadeOutImage 0.7s ease-out forwards;
+}
+
+/* Definición de animación de entrada */
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Definición de animación de salida */
+@keyframes fadeOutImage {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.result-message {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+}
