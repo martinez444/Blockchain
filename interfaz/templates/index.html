@@ -99,7 +99,7 @@
         <div class="modal-contenido animacion-modal">
             <span class="cerrar" onclick="cerrarFormulario()">&times;</span>
             <h2>Comparar archivo</h2>
-            <form id="formComparar" onsubmit="return enviarFormulario()">
+            <form id="formComparar" onsubmit="return enviarFormulario()" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="rutaArchivo">Archivo</label>
                     <input type="file" id="rutaArchivo" name="archivo" required> 
@@ -272,7 +272,24 @@
 
     function enviarFormulario() {
         const form = document.getElementById("formComparar");
-        const formData = new FormData(form);
+        const archivoInput = document.getElementById("rutaArchivo");
+        const txHashInput = document.getElementById("txHash");
+
+        // Validar que se ha seleccionado un archivo
+        if (!archivoInput.files || archivoInput.files.length === 0) {
+            alert("Por favor, selecciona un archivo antes de enviar.");
+            return false;
+        }
+
+        // Validar que se ha proporcionado un tx_hash (opcional si lo estás cargando dinámicamente)
+        if (!txHashInput.value) {
+            alert("No se ha proporcionado un hash de transacción.");
+            return false;
+        }
+
+        const formData = new FormData();
+        formData.append("archivo", archivoInput.files[0]);
+        formData.append("tx_hash", txHashInput.value);
 
         fetch("/bajar", {
             method: "POST",
@@ -281,16 +298,12 @@
         .then(response => response.json())
         .then(data => {
             if (data.mensaje) {
-                if (data.mensaje == "OK")
-                    alert(
-                        "Coincide"
-                    );
-                else if (data.mensaje == "KO")
-                    alert(
-                        "No coincide"
-                    );
-                else
-                    alert(data.mensaje);
+                if(data.mensaje == "OK"){
+                    alert("Coinciden")
+                }
+                else {
+                    alert("No coinciden")
+                }
             } else if (data.error) {
                 alert("Error: " + data.error);
             } else {

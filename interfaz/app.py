@@ -1,17 +1,17 @@
 from flask import Flask, request, jsonify, render_template
-import hashlib
+# import hashlib
 from web3 import Web3, HTTPProvider
-import ssl
-import requests
+# import ssl
+# import requests
 from datetime import datetime
-import urllib3
+# import urllib3
 import os
-import json
+# import json
 import pytz # Para la zona horaria UTC
 import socket # Para obtener la IP del servidor
 import functions as f
 
-# f.parch_SSL() # Parchear verificación SSL 
+f.parch_SSL() # Parchear verificación SSL 
 
 # --------------------------
 # Configuración
@@ -44,7 +44,6 @@ def subir():
 
     file = request.files['file']
     filepath = os.path.abspath(file.filename)
-    file.save(filepath)
     nombre_archivo = os.path.basename(filepath) # Se obtiene el nombre del archivo a partir de la ruta
     
     client_ip = f.getClientIp()
@@ -53,7 +52,9 @@ def subir():
     hash_hex = ""
     try:
         
-        hash_hex = f.hash_archivo(filepath)
+        contenido = file.read()
+        file.seek(0)
+        hash_hex = f.hash_archivo(contenido)
         nonce = w3.eth.get_transaction_count(cuenta.address, 'pending') # Número de transacción; se recupera el número de transacciones realizadas, incluyendo las pendientes
         tx = {
             "nonce": nonce,
@@ -68,6 +69,7 @@ def subir():
         tx_hash = w3.eth.send_raw_transaction(signed_tx.raw_transaction) # Se envía la transacción firmada a la red y se guarda el hash de la transacción
         tx_hash_str = w3.to_hex(tx_hash) # El hash de la transacción se convierte a string hexadecimal
 
+        file.save(filepath)
         f.create_Log("UPLOAD", nombre_archivo, hash_hex, "", tx_hash_str, "OK", "Archivo subido correctamente", "Usuario") # Guardar en el log
         #Mensaje que se printea en la consola
         return jsonify({
@@ -77,7 +79,7 @@ def subir():
         })
 
     except Exception as e:
-        f.create_Log("UPLOAD", filepath, hash_hex, "", "", "ERROR", str(e), "Usuario", server_ip, client_ip) # Guardar en el log
+        f.create_Log("UPLOAD", filepath, hash_hex, "", "", "ERROR", str(e), "Usuario") # Guardar en el log
         return jsonify({"error": str(e)}), 500
 
 # Ruta para bajar el hash de un archivo a raiz del hash de una transacción y compararlo con el hash del archivo local (que puede haber sido modificado o no)
@@ -88,46 +90,54 @@ def bajar():
     hash_enviado = ""
     tx_hash = ""
     nombre_archivo = ""
+
     try:
-        # Si se envía un JSON, lo procesamos como antes (opcional)
         if request.is_json:
-            data = request.get_json()
-            tx_hash = data.get("tx_hash")
             return jsonify({"error": "Este endpoint solo acepta archivos vía formulario HTML"}), 400
 
-        # Obtener tx_hash del formulario
+        # Obtener tx_hash y archivo
         tx_hash = request.form.get("tx_hash")
-
-        # Obtener el archivo del formulario
         archivo = request.files.get("archivo")
         if not archivo or not tx_hash:
             return jsonify({"error": "Debes proporcionar tx_hash y un archivo"}), 400
 
         nombre_archivo = archivo.filename
 
-        # Leer el contenido del archivo (en memoria)
-
-        # Calcular hash del archivo (usa directamente el contenido)
+        # Leer contenido del archivo correctamente
+        archivo.seek(0)
         contenido = archivo.read()
-        hash_local = f.hash_archivo(contenido)  # Debes crear o adaptar esta función
 
-        # Obtener el hash enviado en la transacción
+        if len(contenido) == 0:
+            return jsonify({"error": "El archivo está vacío"}), 400
+
+        hash_local = f.hash_archivo(contenido)
+
+        # Obtener hash de la transacción
         tx = w3.eth.get_transaction(tx_hash)
         hash_enviado = tx['input'].hex()
 
-        mensaje = "OK" if hash_enviado == hash_local else "KO"
+        # Limpiar el '0x' si está presente
+        hash_enviado_clean = hash_enviado.replace("0x", "").lower()
+        hash_local = hash_local.lower()
 
-        f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado, tx_hash, "OK", mensaje, "Usuario")
+        # Comparación
+        if hash_enviado_clean == hash_local:
+            mensaje = "OK"
+        else:
+            mensaje = "KO"
+
+        f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado_clean, tx_hash, "OK", mensaje, "Usuario")
 
         return jsonify({
             "mensaje": mensaje,
             "hash_local": hash_local,
-            "hash_enviado": hash_enviado
+            "hash_enviado": hash_enviado_clean
         })
 
     except Exception as e:
         f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado, tx_hash, "ERROR", str(e), "Usuario")
         return jsonify({"error": "Error al procesar la transacción: " + str(e)}), 500
+
 
 # Iniciar servidor
 if __name__ == "__main__":
