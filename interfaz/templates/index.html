@@ -305,13 +305,11 @@
             resSubmit.appendChild(resImg);
             if (data.mensaje) {
                 if(data.mensaje == "OK"){
-                    alert("Coinciden")
                     resTxt.classList.add("green");
                     resTxt.innerText = "¡Los hashes coinciden!";
-                    resImg.src = "../static/Sujeto.png";
+                    resImg.src = "../static/sujeto.jpg";
                 }
                 else if (data.mensaje === "KO") {
-                    alert("No coinciden")
                     resTxt.classList.add("red");
                     resTxt.innerText = "¡Los hashes no coinciden!"
                     resImg.src = "../static/sujeto.jpg";
