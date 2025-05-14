@@ -32,7 +32,6 @@ app = Flask(__name__)
 # Página principal
 @app.route("/")
 def index():
-    #datos = f.leer_txt_como_tabla("C:/Users/david.benllochpenin/Desktop/blockchain/interfaz/log.txt")  # Cambia el nombre si es necesario
     datos = f.leer_txt_como_tabla(f.log_path)
     return render_template("index.html", datos=datos) # Renderiza la plantilla HTML con los datos del log
 
@@ -46,9 +45,6 @@ def subir():
     filepath = os.path.abspath(file.filename)
     nombre_archivo = os.path.basename(filepath) # Se obtiene el nombre del archivo a partir de la ruta
     
-    client_ip = f.getClientIp()
-    hostname = socket.gethostname()
-    server_ip = socket.gethostbyname(hostname)
     hash_hex = ""
     try:
         
@@ -86,7 +82,6 @@ def subir():
 
 @app.route("/bajar", methods=["POST"])
 def bajar():
-    print("ñema")
     hash_local = ""
     hash_enviado = ""
     tx_hash = ""
