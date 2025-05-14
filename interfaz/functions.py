@@ -35,14 +35,14 @@ log_dir = os.path.dirname(os.path.abspath(__file__))
 log_path = os.path.join(log_dir, "log.txt")
 
 # Crea el archivo de log
-def create_Log(operacion, nArchivo, hLocal, hRecibido, txHash, resultado, msg, usuario):
+def create_Log(operacion, nArchivo, hLocal, hRecibido, txHash, resultado, msg, usuario, duracion=""):
     fecha = datetime.now(pytz.utc).strftime('%Y-%m-%d %H:%M:%S')
     serverIP = getServerIp()
     if operacion == "SERVER":
         clientIP = ""
     else:
         clientIP = getClientIp()
-    log = fecha + "~" + operacion + "~" + nArchivo + "~" + hLocal + "~" + hRecibido + "~" + txHash + "~" + resultado + "~" + msg + "~" + usuario + "~" + serverIP + "~" + clientIP 
+    log = fecha + "~" + operacion + "~" + nArchivo + "~" + hLocal + "~" + hRecibido + "~" + txHash + "~" + resultado + "~" + msg + "~" + usuario + "~" + serverIP + "~" + clientIP + "~" + duracion
     
     with open(log_path, 'a') as log_file:
         log_file.write(log + '\n')  
@@ -73,7 +73,7 @@ def leer_txt_como_tabla(ruta_archivo):
             if celdas:  # Ignorar líneas vacías
                 tabla.append(celdas)
 
-    cols_elim = [7, 6, 4, 1]
+    cols_elim = [11, 7, 6, 4, 1]
     cols_elim = sorted(cols_elim, reverse=True)
 
     tabla_filtrada = []

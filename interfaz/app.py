@@ -4,6 +4,7 @@ from web3 import Web3, HTTPProvider
 # import ssl
 # import requests
 from datetime import datetime
+
 # import urllib3
 import os
 # import json
@@ -32,6 +33,7 @@ app = Flask(__name__)
 # Página principal
 @app.route("/")
 def index():
+    #datos = f.leer_txt_como_tabla("C:/Users/david.benllochpenin/Desktop/blockchain/interfaz/log.txt")  # Cambia el nombre si es necesario
     datos = f.leer_txt_como_tabla(f.log_path)
     return render_template("index.html", datos=datos) # Renderiza la plantilla HTML con los datos del log
 
@@ -45,12 +47,19 @@ def subir():
     filepath = os.path.abspath(file.filename)
     nombre_archivo = os.path.basename(filepath) # Se obtiene el nombre del archivo a partir de la ruta
     
+    client_ip = f.getClientIp()
+    hostname = socket.gethostname()
+    server_ip = socket.gethostbyname(hostname)
     hash_hex = ""
     try:
         
         contenido = file.read()
         file.seek(0)
         hash_hex = f.hash_archivo(contenido)
+
+        # Obtener hora actual
+        start_time = datetime.now()
+
         nonce = w3.eth.get_transaction_count(cuenta.address, 'pending') # Número de transacción; se recupera el número de transacciones realizadas, incluyendo las pendientes
         tx = {
             "nonce": nonce,
@@ -65,18 +74,38 @@ def subir():
         tx_hash = w3.eth.send_raw_transaction(signed_tx.raw_transaction) # Se envía la transacción firmada a la red y se guarda el hash de la transacción
         tx_hash_str = w3.to_hex(tx_hash) # El hash de la transacción se convierte a string hexadecimal
 
+        # Obtener hora de fin y calcular la duración
+        end_time = datetime.now()
+        duration_seconds = (end_time - start_time).total_seconds()
+
+        # Extraer horas, minutos, segundos y milisegundos
+        milliseconds = int((duration_seconds - int(duration_seconds)) * 1000)  # milisegundos
+        seconds = int(duration_seconds)  # segundos
+        minutes = seconds // 60
+        seconds = seconds % 60
+        hours = minutes // 60
+        minutes = minutes % 60
+
+        # Duración en formato HH:MM:SS.MS
+        formatted_duration = f"{hours:02}:{minutes:02}:{seconds:02}.{milliseconds:03}"
+
+        # Guardar en el log
         file.save(filepath)
-        f.create_Log("UPLOAD", nombre_archivo, hash_hex, "", tx_hash_str, "OK", "Archivo subido correctamente", "Usuario") # Guardar en el log
-        #Mensaje que se printea en la consola
+        f.create_Log("UPLOAD", nombre_archivo, hash_hex, "", tx_hash_str, "OK", "Archivo subido correctamente", "Usuario", duracion=formatted_duration) # Guardar en el log
+
+        # Mensaje que se imprime en la consola
         return jsonify({
             "hash_archivo": hash_hex,
             "tx_hash": tx_hash_str,
-            "etherscan_url": f"https://sepolia.etherscan.io/tx/{tx_hash_str}"# URL para ver la transacción en Etherscan (Puede tardar bastante en aparecer)
+            "etherscan_url": f"https://sepolia.etherscan.io/tx/{tx_hash_str}", # URL para ver la transacción en Etherscan (Puede tardar bastante en aparecer)
+            "tiempo_segundos": formatted_duration
         })
 
     except Exception as e:
-        f.create_Log("UPLOAD", filepath, hash_hex, "", "", "ERROR", str(e), "Usuario") # Guardar en el log
+        f.create_Log("UPLOAD", filepath, hash_hex, "", "", "ERROR", str(e), "Usuario", duracion="ERROR") # Guardar en el log
         return jsonify({"error": str(e)}), 500
+
+
 
 # Ruta para bajar el hash de un archivo a raiz del hash de una transacción y compararlo con el hash del archivo local (que puede haber sido modificado o no)
 

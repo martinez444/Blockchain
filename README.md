@@ -1,6 +1,7 @@
 web3
 requests
 flasks
+pytz
 
 Primero hay que iniciar el servidor ejecutando app.py, luego, en otra ventana de la terminal se pueden ejecutar los comandos
 
