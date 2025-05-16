@@ -274,3 +274,9 @@
 2025-05-14 14:58:46~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.186~
 2025-05-14 15:18:56~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
 2025-05-14 15:18:57~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.186~
+2025-05-16 09:32:00~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.122~~
+2025-05-16 09:32:04~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.122~~
+2025-05-16 09:38:25~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.122~~
+2025-05-16 09:38:25~SERVER~~~~~OK~Servidor detenido~Usuario~10.100.87.122~~
+2025-05-16 09:38:31~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.122~~
+2025-05-16 09:38:35~SERVER~~~~~OK~Servidor iniciado~Usuario~10.100.87.122~~
