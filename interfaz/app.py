@@ -184,7 +184,9 @@ def bajar():
         mensaje = "OK" if hash_enviado_clean == hash_local else "KO"
 
         # Log the verification
-        f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado_clean, tx_hash, "OK", mensaje, "Usuario")
+        if mensaje == "KO":
+            f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado_clean, tx_hash, "OK", "Archivo Incorrecto", "Usuario")
+        else: f.create_Log("DOWNLOAD", nombre_archivo, hash_local, hash_enviado_clean, tx_hash, "OK", "Archivo Correcto", "Usuario")
 
         # Return result
         return jsonify({
